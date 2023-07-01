@@ -6,6 +6,7 @@ import {Setting} from './pages/Setting';
 import {Customer} from './pages/Customer';
 import { Dashboard } from './pages/Dashboard';
 import './App.css';
+import { Analytics } from './pages/Analytics';
 
 
 function App() {
@@ -13,9 +14,10 @@ function App() {
     <Routes>
       <Route path='/' element={<Home />}/>
       <Route path='/dashboard' element={<Dashboard />}/>
-      <Route path='/about' element={<About />}/>
+      <Route path='/billing' element={<About />}/>
       <Route path='/setting' element={<Setting />}/>
       <Route path='/customer' element={<Customer />}/>
+      <Route path='/analytics' element={<Analytics />}/>
 
     </Routes>
     

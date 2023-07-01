@@ -7,8 +7,10 @@ import CardContent from '@mui/material/CardContent';
 import SideNav from '../components/SideNav'
 import Header from '../components/Header'
 import Card from '@mui/material/Card';
-import './Dash.css'
 import AccordionC from '../components/Accordion';
+
+import './Dash.css'
+import { BarChart } from '../charts/BarChart';
 
 
 export const Dashboard = () => {
@@ -96,6 +98,7 @@ export const Dashboard = () => {
             <Grid item xs={8}>
               <Card sx={{ height: 60 + 'vh' }}>
                 <CardContent>
+                  <BarChart />
                 </CardContent>
 
               </Card>

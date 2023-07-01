@@ -8,14 +8,15 @@ import CssBaseline from '@mui/material/CssBaseline';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
+import SettingsSuggestIcon from '@mui/icons-material/SettingsSuggest';
+import GroupIcon from '@mui/icons-material/Group';
+import AnalyticsIcon from '@mui/icons-material/Analytics';
+import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import { useAppStore } from '../AppStore';
 
 
@@ -125,12 +126,12 @@ export default function SideNav() {
                     justifyContent: 'center',
                   }}
                 >
-                <InboxIcon />
+                <CurrencyRupeeIcon />
                 </ListItemIcon>
-                <ListItemText primary='About' sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary='Billing' sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
-            <ListItem onClick={() => navigate('/setting')} disablePadding sx={{ display: 'block' }}>
+            <ListItem onClick={() => navigate('/billing')} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -145,7 +146,7 @@ export default function SideNav() {
                     justifyContent: 'center',
                   }}
                 >
-                <InboxIcon />
+                <SettingsSuggestIcon />
                 </ListItemIcon>
                 <ListItemText primary='Setting' sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
@@ -165,9 +166,29 @@ export default function SideNav() {
                     justifyContent: 'center',
                   }}
                 >
-                <InboxIcon />
+                <GroupIcon />
                 </ListItemIcon>
                 <ListItemText primary='Customer' sx={{ opacity: open ? 1 : 0 }} />
+              </ListItemButton>
+            </ListItem>
+            <ListItem onClick={() => navigate('/analytics')} disablePadding sx={{ display: 'block' }}>
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                <AnalyticsIcon />
+                </ListItemIcon>
+                <ListItemText primary='Analytics' sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
         </List>
