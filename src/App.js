@@ -1,10 +1,10 @@
 
 import { Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
-import {About} from './components/About';
-import {Setting} from './components/Setting';
-import {Customer} from './components/Customer';
-import { Dashboard } from './components/Dashboard';
+import {About} from './pages/About';
+import {Setting} from './pages/Setting';
+import {Customer} from './pages/Customer';
+import { Dashboard } from './pages/Dashboard';
 import './App.css';
 
 

@@ -5,15 +5,18 @@ import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import CssBaseline from '@mui/material/CssBaseline';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
+import { useAppStore } from '../AppStore';
 
 
 const drawerWidth = 240;
@@ -69,10 +72,11 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 export default function SideNav() {
   const navigate = useNavigate()
   const theme = useTheme();
-  const [open, setOpen] = React.useState(true);
+  // const [open, setOpen] = React.useState(true);
+  const open = useAppStore((state) => state.dopen)
 
   const handleDrawerClose = () => {
-    setOpen(false);
+    // setOpen(false);
   };
 
   return (
@@ -80,7 +84,7 @@ export default function SideNav() {
       <CssBaseline />
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
-          <IconButton onClick={() => setOpen(!open)}>
+          <IconButton>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
