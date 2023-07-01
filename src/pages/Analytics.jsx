@@ -8,10 +8,13 @@ import SideNav from '../components/SideNav'
 import Header from '../components/Header'
 import Card from '@mui/material/Card';
 import AccordionC from '../components/Accordion';
+import CountUp from 'react-countup';
 
 import './Dash.css'
 import { BarChart } from '../charts/BarChart';
 import { GeoChart } from '../charts/GeoChart';
+import { Bar } from '../charts/Bar';
+import { PieChart } from '../charts/PieChart';
 
 
 export const Analytics = () => {
@@ -23,14 +26,14 @@ export const Analytics = () => {
         <SideNav />
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <Grid container spacing={2}>
-            <Grid item xs={4}>
+            <Grid item xs={5}>
               <Stack spacing={2} direction={'column'} >
                 <Stack spacing={2} direction={'row'} >
                   <Card sx={{ minWidth: 48 + '%', height: 150 }} style={{ background: 'linear-gradient(to right bottom, #314755, #26a0da)' }}>
                     <CardContent>
                       <PaymentIcon fontSize='large' className="icon" />
                       <Typography gutterBottom variant="h5" component="div" color={'white'}>
-                        $500.00
+                      <CountUp delay={0.4} end={32000} duration={0.6}/>
                       </Typography>
                       <Typography gutterBottom variant="body" component="div" color={'white'} >
                         Total Earning
@@ -42,7 +45,7 @@ export const Analytics = () => {
                     <CardContent>
                       <PaidRoundedIcon fontSize='large' className="icon" />
                       <Typography gutterBottom variant="h5" component="div" color={'white'}>
-                        $900.00
+                      <CountUp delay={0.4} end={35000} duration={0.6}/>
                       </Typography>
                       <Typography gutterBottom variant="body" component="div" color={'white'}>
                         Total Orders
@@ -57,7 +60,7 @@ export const Analytics = () => {
                     <CardContent>
                       <PaidRoundedIcon fontSize='large' className="icon" />
                       <Typography gutterBottom variant="h5" component="div" color={'white'}>
-                        $900.00
+                      <CountUp delay={0.4} end={12000} duration={0.6}/>
                       </Typography>
                       <Typography gutterBottom variant="body" component="div" color={'white'}>
                         Total Orders
@@ -69,7 +72,7 @@ export const Analytics = () => {
                     <CardContent>
                       <PaidRoundedIcon fontSize='large' className="icon" />
                       <Typography gutterBottom variant="h5" component="div" color={'white'}>
-                        $900.00
+                      <CountUp delay={0.4} end={32000} duration={0.6}/>
                       </Typography>
                       <Typography gutterBottom variant="body" component="div" color={'white'}>
                         Total Orders
@@ -80,16 +83,12 @@ export const Analytics = () => {
                 </Stack>
               </Stack>
             </Grid>
-            <Grid item xs={8}>
-              <Stack spacing={2} direction={'column'}>
-                <Card sx={{ maxWidth: 845, height: 40 + 'vh' }} >
+            <Grid item xs={7}>
+                <Card sx={{ height: 40 + 'vh' }}  >
                   <CardContent >
-
-
+                    <Bar />
                   </CardContent>
-
                 </Card>
-              </Stack>
             </Grid>
           </Grid>
           <Box height={30} />
@@ -104,14 +103,12 @@ export const Analytics = () => {
             <Grid item xs={4}>
               <Card sx={{ height: 40 + 'vh' }}>
                 <CardContent>
-        
+                <PieChart />
                 </CardContent>
-
               </Card>
             </Grid>
           </Grid>
         </Box>
-
       </Grid>
     </Grid>
   )

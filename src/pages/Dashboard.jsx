@@ -11,6 +11,7 @@ import AccordionC from '../components/Accordion';
 
 import './Dash.css'
 import { BarChart } from '../charts/BarChart';
+import CountUp from 'react-countup';
 
 
 export const Dashboard = () => {
@@ -28,7 +29,7 @@ export const Dashboard = () => {
                   <CardContent>
                     <PaymentIcon fontSize='large' className="icon" />
                     <Typography gutterBottom variant="h5" component="div" color={'white'}>
-                      $500.00
+                    $<CountUp delay={0.4} end={500.00} duration={0.6}/>
                     </Typography>
                     <Typography gutterBottom variant="body" component="div" color={'white'} >
                       Total Earning
@@ -40,19 +41,18 @@ export const Dashboard = () => {
                   <CardContent>
                     <PaidRoundedIcon fontSize='large' className="icon" />
                     <Typography gutterBottom variant="h5" component="div" color={'white'}>
-                      $900.00
+                    $<CountUp delay={0.4} end={900.00} duration={0.6}/>
                     </Typography>
                     <Typography gutterBottom variant="body" component="div" color={'white'}>
                       Total Orders
                     </Typography>
                   </CardContent>
-
                 </Card>
               </Stack>
             </Grid>
             <Grid item xs={4}>
               <Stack spacing={2} direction={'column'}>
-                <Card sx={{ maxWidth: 345, height: 70 }} style={{ background: 'linear-gradient(to right bottom, #1f4037, #99f2c8)' }} >
+                <Card sx={{ maxWidth: 445, height: 70 }} style={{ background: 'linear-gradient(to right bottom, #1f4037, #99f2c8)' }} >
                   <CardContent >
                     <Grid display={'flex'} direction={'row'} justifyContent={'space-evenly'} alignItems={'center'} marginTop={-1}>
                       <Grid >
@@ -60,19 +60,16 @@ export const Dashboard = () => {
                       </Grid>
                       <Grid >
                         <Typography variant='h6' color={'white'}>
-                          $203
+                        $<CountUp delay={0.4} end={203.00} duration={0.6}/>
                         </Typography>
                         <Typography color={'white'}>
                           Total Income
                         </Typography>
                       </Grid>
                     </Grid>
-
-
                   </CardContent>
-
                 </Card>
-                <Card sx={{ maxWidth: 345, height: 70 }}>
+                <Card sx={{ maxWidth: 445, height: 70 }}>
                   <CardContent>
                     <Grid display={'flex'} direction={'row'} justifyContent={'space-evenly'} alignItems={'center'} marginTop={-1}>
                       <Grid >
@@ -80,7 +77,7 @@ export const Dashboard = () => {
                       </Grid>
                       <Grid >
                         <Typography variant='h6'>
-                          $203
+                        $<CountUp delay={0.4} end={200.00} duration={0.6}/>
                         </Typography>
                         <Typography>
                           Total Income
@@ -88,7 +85,6 @@ export const Dashboard = () => {
                       </Grid>
                     </Grid>
                   </CardContent>
-
                 </Card>
               </Stack>
             </Grid>
