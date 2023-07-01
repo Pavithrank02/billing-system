@@ -162,8 +162,8 @@ export default function Header() {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }} marginBottom={8}>
-      <AppBar position="fixed">
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="fixed" elevation={0} sx={{backgroundColor: '#ffffff', color: 'black'}}>
         <Toolbar>
           <IconButton
             size="large"
@@ -181,7 +181,7 @@ export default function Header() {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            MUI
+            Billing System
           </Typography>
           <Search>
             <SearchIconWrapper>
