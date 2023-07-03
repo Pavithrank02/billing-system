@@ -1,18 +1,17 @@
-//db.js
+const {MongoClient} = require('mongodb')
 
-const mongoose = require('mongoose')
+let dbConnection
+let url = 'mongodb+srv://pavithran:9790436040@cluster1.oxk2vdh.mongodb.net/?retryWrites=true&w=majority'
 
-const url =' mongodb+srv://pavithran:<password>@cluster0.abzcaz7.mongodb.net/';
-
-const connectionParams={
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true 
+module.exports = {
+  connectToDb: (cb) => {
+    MongoClient.connect(url).then((client) => {
+      dbConnection = client.db()
+      return cb()
+    }).catch(err => {
+      console.log(err)
+      return cb(err)
+    })
+  },
+  getDb: () => { dbConnection }
 }
-mongoose.connect(url,connectionParams)
-    .then( () => {
-        console.log('Connected to database ')
-    })
-    .catch( (err) => {
-        console.error(`Error connecting to the database. \n${err}`);
-    })
