@@ -111,7 +111,7 @@ export default function SideNav() {
                 <ListItemText primary='Dashboard' sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
-            <ListItem onClick={() => navigate('/about')} disablePadding sx={{ display: 'block' }}>
+            <ListItem onClick={() => navigate('/billing')} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
