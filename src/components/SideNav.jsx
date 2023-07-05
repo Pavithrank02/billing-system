@@ -148,7 +148,7 @@ export default function SideNav() {
               <ListItemText primary='Billing' sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
           </ListItem>
-          <ListItem onClick={() => navigate('/billing')} disablePadding sx={{ display: 'block' }}>
+          <ListItem onClick={() => navigate('/newquote')} disablePadding sx={{ display: 'block' }}>
             <ListItemButton
               sx={{
                 minHeight: 48,
@@ -208,29 +208,36 @@ export default function SideNav() {
               <ListItemText primary='Analytics' sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
           </ListItem>
-          <ListItemButton onClick={handleClick}>
-            <ListItemIcon 
+          <ListItemButton
             sx={{
-              minWidth: 0,
-              mr: open ? 3 : 'auto',
-              justifyContent: 'center',
+              minHeight: 48,
+              justifyContent: open ? 'initial' : 'center',
+              px: 2.5,
             }}
+
+            onClick={handleClick}>
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : 'auto',
+                justifyContent: 'center',
+              }}
             >
               <ReceiptIcon />
             </ListItemIcon>
-            <ListItemText primary="Invoice" sx={{ opacity: open ? 1 : 0 }}/>
+            <ListItemText primary="Invoice" sx={{ opacity: open ? 1 : 0 }} />
             {openL ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
           <Collapse in={openL} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <ListItemButton sx={{ pl: 4, ml: 4 }}>
-                <ListItemText primary="UnPaid Invoices" sx={{ opacity: open ? 1 : 0 }}/>
+              <ListItemButton sx={{ pl: 4, ml: 5  }}>
+                <ListItemText primary="UnPaid Invoices" sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4, ml: 4 }}>
-                <ListItemText primary="Paid Invoices" sx={{ opacity: open ? 1 : 0 }}/>
+              <ListItemButton sx={{ pl: 4, ml: 5 }}>
+                <ListItemText primary="Paid Invoices" sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4, ml: 4 }}>
-                <ListItemText primary="Starred" sx={{ opacity: open ? 1 : 0 }}/>
+              <ListItemButton sx={{ pl: 4, ml: 5 }}>
+                <ListItemText primary="Starred" sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </List>
           </Collapse>
