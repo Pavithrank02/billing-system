@@ -8,6 +8,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Card from '@mui/material/Card';
 import Tabs from '../components/Tabs';
 import BasicTabs from '../components/Tabs';
+import CustomerForm from '../components/forms/CustomerForm';
 
 const Invoice = () => {
   const [value, setValue] = React.useState('female');
@@ -25,15 +26,7 @@ const Invoice = () => {
           <Card sx={{ height: 60 + 'vh' }}>
             <CardContent>
             Customer Type
-            <RadioGroup
-                aria-labelledby="demo-controlled-radio-buttons-group"
-                name="controlled-radio-buttons-group"
-                value={value}
-                onChange={handleChange}
-              >
-                <FormControlLabel value="Business" control={<Radio />} label="Business" />
-                <FormControlLabel value="Individual" control={<Radio />} label="Individual" />
-              </RadioGroup>
+            <CustomerForm />
 
             </CardContent>
 

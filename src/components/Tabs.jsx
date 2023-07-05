@@ -1,9 +1,13 @@
 import * as React from 'react';
+import Grid from '@mui/material/Grid';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
+import { Stack } from '@mui/material';
+import AddressForm from './forms/AddressForm';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -57,10 +61,11 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        Item One
+     
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        Item Two
+      <Typography variant='body'>Billing Address</Typography>
+       <AddressForm />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         Item Three
