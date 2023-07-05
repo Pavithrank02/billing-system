@@ -14,14 +14,15 @@ export default function Salutation() {
 
   return (
     <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+      <FormControl sx={{width: 100}} size='small'>
+        <InputLabel id="demo-simple-select-label">Salutation</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={age}
-          label="Age"
+          label="Salutation"
           onChange={handleChange}
+
         >
           <MenuItem value={10}>Mr.</MenuItem>
           <MenuItem value={20}>Mrs</MenuItem>
