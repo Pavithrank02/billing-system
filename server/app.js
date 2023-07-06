@@ -9,21 +9,20 @@ const app = express()
 let db
 connectToDb((err) => {
   if(!err) {
-    app.listen(3000, () => {
-      console.log('app listening on port 3000')
+    app.listen(3001, () => {
+      console.log('app listening on port 3001')
     })
     db = getDb()
   }
 })
 
 
-
-
 //routes
 
 app.get('/reciept', (res, req) => {
+  console.log("res", res)
 
-  db.collection('reciept').find().then(() => {
+  db.collection('customer').find().then(() => {
     res.status(200).json().catch(()=> {
       res.status(500).json({error: "oo"})
     })

@@ -28,9 +28,17 @@ function subtotal(items) {
 }
 
 const rows = [
-  createRow(<Grid item xs={3} marginBottom={2} >
+  createRow(
+  <Grid item xs={3} marginBottom={2} >
     <TextField sx={{ width: 310 }} id="outlined-basic" label="" variant="outlined" size="small"  />
-  </Grid>),
+  </Grid>, 
+  <Grid item xs={3} marginBottom={2} >
+    <TextField sx={{ width: 310 }} id="outlined-basic" label="" variant="outlined" size="small"  onChange={(e) => e.target.value}/>
+  </Grid>, 
+  <Grid item xs={3} marginBottom={2} >
+  <TextField sx={{ width: 310 }} id="outlined-basic" label="" variant="outlined" size="small"  onChange={(e) => e.target.value}/>
+</Grid>
+),
   createRow('Paper (Case)', 10, 45.99),
   createRow('Waste Basket', 2, 17.99),
 ];
@@ -54,7 +62,7 @@ export default function Quotes() {
             <TableCell>Item Details</TableCell>
             <TableCell align="right">Qty.</TableCell>
             <TableCell align="right">Unit</TableCell>
-            <TableCell align="right">Sum</TableCell>
+            <TableCell align="right">Amount</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
