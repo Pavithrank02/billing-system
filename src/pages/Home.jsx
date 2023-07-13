@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import { Button, Grid, TextField, Typography } from '@mui/material'
 
 const Home = () => {
-  const [isSignup, setIsSignup] = useState(false)
   const [inputs, setInputs] = useState({
-    name: "", email: "", password: ""
+    email: "", password: ""
   })
   const handleChange = (e) => {
     setInputs((prevState) => ({
@@ -19,7 +18,6 @@ const Home = () => {
 
   }
   const resetState = () => {
-    setIsSignup(!isSignup)
     setInputs({
       name:'',
       email:'',
@@ -53,19 +51,9 @@ const Home = () => {
           variant='h2'
           padding={3}
           textAlign={'center'}>
-          {isSignup ? "Signup" : "Login"}
+         Login
         </Typography>
-        {isSignup && (
-          <TextField
-            type={'text'}
-            name="name"
-            value={inputs.name}
-            onChange={handleChange}
-            variant='outlined'
-            placeholder='Name'
-            margin='normal'
-          />
-        )}
+  
         <TextField
           type={'email'}
           name="email"
@@ -89,13 +77,13 @@ const Home = () => {
           type='submit'
           variant='contained'
           color='warning'>
-            {isSignup ? "Signup" : "Login"}
+           Login
         </Button>
         <Button
           onClick={resetState}
           sx={{ marginTop: 3, borderRadius: 2 }}
         >
-          {isSignup ? "Login" : "Signup"}
+          Signup
         </Button>
         
       </Grid>
