@@ -2,8 +2,9 @@ import React from 'react'
 import { Box, Grid, Typography } from '@mui/material'
 import SideNav from '../components/SideNav'
 import Header from '../components/Header'
+import Quotes from '../components/Quotes'
 
-export const About = () => {
+export const Billing = () => {
   return (
     <Grid>
     <Header />
@@ -11,9 +12,7 @@ export const About = () => {
     <Grid display={'flex'}>
       <SideNav />
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <Typography variant='h3'>
-          About
-        </Typography>
+        <Quotes />
       </Box>
     </Grid>
   </Grid>

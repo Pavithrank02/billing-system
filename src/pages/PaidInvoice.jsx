@@ -6,7 +6,7 @@ import UnPaidInvoiceTable from '../components/tables/UnPaidInvoiceTable';
 import Header from '../components/Header';
 
 
-const Invoice = () => {
+const PaidInvoiceTable = () => {
   const [value, setValue] = React.useState('female');
 
   const handleChange = (event) => {
@@ -27,4 +27,4 @@ const Invoice = () => {
   )
 }
 
-export default Invoice
+export default PaidInvoiceTable

@@ -1,13 +1,13 @@
 
 import { Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
-import {About} from './pages/About';
 import {Setting} from './pages/Setting';
 import {Customer} from './pages/Customer';
 import { Dashboard } from './pages/Dashboard';
 import './App.css';
 import { Analytics } from './pages/Analytics';
 import Invoice from './pages/Invoice';
+import { Billing } from './pages/Billing';
 
 
 function App() {
@@ -19,6 +19,7 @@ function App() {
       <Route path='/setting' element={<Setting />}/>
       <Route path='/customer' element={<Customer />}/>
       <Route path='/analytics' element={<Analytics />}/>
+      <Route path='/newquote' element={<Billing />}/>
 
 
     </Routes>
