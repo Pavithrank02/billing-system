@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, Grid, TextField, Typography } from '@mui/material'
 
 const Home = () => {
-  const [inputs, setInputs] = useState({
+  const [inputs, setInputs] = useState({ //states
     email: "", password: ""
   })
   const handleChange = (e) => {
