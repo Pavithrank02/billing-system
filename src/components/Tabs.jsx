@@ -61,11 +61,11 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-     
+
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-      <Typography variant='body'>Billing Address</Typography>
-       <AddressForm />
+        <Typography variant='body'>Billing Address</Typography>
+        <AddressForm />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         Item Three

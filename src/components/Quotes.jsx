@@ -30,17 +30,15 @@ function subtotal(items) {
 const rows = [
   createRow(
   <Grid item xs={3} marginBottom={2} >
-    <TextField sx={{ width: 310 }} id="outlined-basic" label="" variant="outlined" size="small"  />
+    <TextField sx={{ width: 200 }} id="outlined-basic" label="" variant="outlined" size="small"  />
   </Grid>, 
   <Grid item xs={3} marginBottom={2} >
-    <TextField sx={{ width: 310 }} id="outlined-basic" label="" variant="outlined" size="small"  onChange={(e) => e.target.value}/>
+    <TextField sx={{ width:  200 }} id="outlined-basic" label="" variant="outlined" size="small"  onChange={(e) => e.target.value}/>
   </Grid>, 
   <Grid item xs={3} marginBottom={2} >
-  <TextField sx={{ width: 310 }} id="outlined-basic" label="" variant="outlined" size="small"  onChange={(e) => e.target.value}/>
+  <TextField sx={{ width:  200 }} id="outlined-basic" label="" variant="outlined" size="small"  onChange={(e) => e.target.value}/>
 </Grid>
 ),
-  createRow('Paper (Case)', 10, 45.99),
-  createRow('Waste Basket', 2, 17.99),
 ];
 
 const invoiceSubtotal = subtotal(rows);
