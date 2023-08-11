@@ -8,7 +8,8 @@ import { DateField } from '@mui/x-date-pickers';
 const InvoiceForm = () => {
   return (
     <Grid>
-      <Grid container >
+      <Typography variant='h4'>Invoice generator</Typography>
+      <Grid container marginTop={2}>
         <Grid item xs={2} marginTop={2} >
           <Typography variant='body'>Customer Name</Typography>
         </Grid>
@@ -22,14 +23,6 @@ const InvoiceForm = () => {
         </Grid>
         <Grid item xs={3} marginBottom={2}>
           <TextField sx={{ fullW: 210 }} id="outlined-basic" label="" variant="outlined" size="small" fullWidth={true} />
-        </Grid>
-      </Grid>
-      <Grid container >
-        <Grid item xs={2} marginTop={2} >
-          <Typography variant='body'>Date</Typography>
-        </Grid>
-        <Grid item xs={3} marginBottom={2} >
-          <DateField />
         </Grid>
       </Grid>
       <Grid container >

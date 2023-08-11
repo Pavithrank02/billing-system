@@ -6,46 +6,49 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { Grid, TextField, Typography } from '@mui/material';
+
 
 const TAX_RATE = 0.07;
 
-function ccyFormat(num) {
-  return `${num.toFixed(2)}`;
-}
+// function ccyFormat(num) {
+//   return `${num.toFixed(5)}`;
+// }
 
-function priceRow(qty, unit) {
-  return qty * unit;
-}
+// function priceRow(qty, unit) {
 
-function createRow(desc, qty, unit) {
-  const price = priceRow(qty, unit);
-  return { desc, qty, unit, price };
-}
+//   return qty * unit;
+// }
 
-function subtotal(items) {
-  return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
-}
+// function createRow(desc, qty, unit) {
 
-const rows = [
-  createRow(
-  <Grid item xs={3} marginBottom={2} >
-    <TextField sx={{ width: 200 }} id="outlined-basic" label="" variant="outlined" size="small"  />
-  </Grid>, 
-  <Grid item xs={3} marginBottom={2} >
-    <TextField sx={{ width:  200 }} id="outlined-basic" label="" variant="outlined" size="small"  onChange={(e) => e.target.value}/>
-  </Grid>, 
-  <Grid item xs={3} marginBottom={2} >
-  <TextField sx={{ width:  200 }} id="outlined-basic" label="" variant="outlined" size="small"  onChange={(e) => e.target.value}/>
-</Grid>
-),
-];
+//   const price = priceRow(qty, unit);
+//   // console.log(price)
+//   return { desc, qty, unit, price };
+// }
+// function subtotal(items) {
+//   return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
+// }
 
-const invoiceSubtotal = subtotal(rows);
-const invoiceTaxes = TAX_RATE * invoiceSubtotal;
-const invoiceTotal = invoiceTaxes + invoiceSubtotal;
+//   const invoiceSubtotal = subtotal();
+// const invoiceTaxes = TAX_RATE * invoiceSubtotal;
+// const invoiceTotal = invoiceTaxes + invoiceSubtotal;
+
+
+
+
 
 export default function Quotes() {
+  const [inputs, setInputs] = React.useState({
+    desc: "",
+    qty: "",
+    unit: ""
+  })
+  const addField = () => {
+    console.log("click")
+  }
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="spanning table">
@@ -58,33 +61,48 @@ export default function Quotes() {
           </TableRow>
           <TableRow>
             <TableCell>Item Details</TableCell>
-            <TableCell align="right">Qty.</TableCell>
-            <TableCell align="right">Unit</TableCell>
-            <TableCell align="right">Amount</TableCell>
+            <TableCell align="left">Qty.</TableCell>
+            <TableCell align="left">Unit</TableCell>
+            <TableCell align="left">Amount</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.desc}>
-              <TableCell>{row.desc}</TableCell>
-              <TableCell align="right">{row.qty}</TableCell>
-              <TableCell align="right">{row.unit}</TableCell>
-              <TableCell align="right">{ccyFormat(row.price)}</TableCell>
-            </TableRow>
-          ))}
+          <TableRow >
+            <TableCell>
+              <Grid item xs={2} marginBottom={2} >
+                <TextField sx={{ width: 310 }} id="outlined-basic" label="" variant="outlined" size="small" value={inputs.qty} onChange={(e) => setInputs(e.target.value)} />
+              </Grid>
+            </TableCell>
+            <TableCell align="right">
+              <Grid item xs={2} marginBottom={2} >
+                <TextField sx={{ width: 310 }} id="outlined-basic" label="" variant="outlined" size="small" value={inputs.qty} onChange={(e) => setInputs(e.target.value)} />
+              </Grid>
+            </TableCell>
+            <TableCell align="right">
+              <Grid item xs={2} marginBottom={2} >
+                <TextField sx={{ width: 310 }} id="outlined-basic" label="" variant="outlined" size="small" value={inputs.unit} onChange={(e) => setInputs(e.target.value)} />
+              </Grid>
+            </TableCell>
+            <TableCell align="right"></TableCell>
+            <TableCell align="right" >
+              <Grid item xs={2} marginBottom={2} onClick={addField} cursor={"pointer"}>
+               <AddCircleIcon />
+              </Grid>
+            </TableCell>
+          </TableRow>
           <TableRow>
             <TableCell rowSpan={3} />
             <TableCell colSpan={2}>Subtotal</TableCell>
-            <TableCell align="right">{ccyFormat(invoiceSubtotal)}</TableCell>
+            {/* <TableCell align="right">{ccyFormat(invoiceSubtotal)}</TableCell> */}
           </TableRow>
           <TableRow>
             <TableCell>Tax</TableCell>
             <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
-            <TableCell align="right">{ccyFormat(invoiceTaxes)}</TableCell>
+            {/* <TableCell align="right">{ccyFormat(invoiceTaxes)}</TableCell> */}
           </TableRow>
           <TableRow>
             <TableCell colSpan={2}> <Typography variant='h6'>Total</Typography></TableCell>
-            <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
+            {/* <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell> */}
           </TableRow>
         </TableBody>
       </Table>
