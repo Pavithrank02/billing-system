@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -12,12 +12,23 @@ import { Grid, TextField, Typography } from '@mui/material';
 
 const TAX_RATE = 0.7;
 
- const Quotes = () => {
+const Quotes = () => {
   const [customerName, setCustomerName] = useState('');
   const [itemName, setItemName] = useState('');
   const [itemPrice, setItemPrice] = useState(0);
   const [itemQuantity, setItemQuantity] = useState(1);
   const [invoiceData, setInvoiceData] = useState(null);
+  
+  const [tableRows, setTableRows] = useState([]);
+
+  const addTableRow = () => {
+    setTableRows([...tableRows, { id: tableRows.length + 1, name: '', age: '' }]);
+  };
+
+  const cloneTableRow = (index) => {
+    const clonedRow = { ...tableRows[index], id: tableRows.length + 1 };
+    setTableRows([...tableRows, clonedRow]);
+  };
 
   const handleGenerateInvoice = () => {
     const newItem = {
@@ -48,6 +59,7 @@ const TAX_RATE = 0.7;
 
   return (
     <TableContainer component={Paper}>
+       <button onClick={addTableRow}>Add New Row</button>
       <Table sx={{ minWidth: 700 }} aria-label="spanning table">
         <TableHead>
           <TableRow>
@@ -63,43 +75,36 @@ const TAX_RATE = 0.7;
             <TableCell align="left">Amount</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
-          <TableRow onBlur={handleGenerateInvoice}>
+        <TableBody >
+        {tableRows.map((row, index) => (
+          <TableRow key={row.id} onBlur={handleGenerateInvoice}>
             <TableCell>
               <Grid item xs={2} marginBottom={2} >
-                <TextField sx={{ width: 310 }} id="outlined-basic" label="" variant="outlined" size="small" value={itemName} onChange={(e) => setItemName(e.target.value)} />
+                <TextField sx={{ width: 310 }} id="outlined-basic" label="" variant="outlined" size="small" value={itemName} index={index} onChange={(e) => setItemName(e.target.value)} />
               </Grid>
             </TableCell>
             <TableCell align="right">
               <Grid item xs={2} marginBottom={2} >
-                <TextField sx={{ width: 310 }} id="outlined-basic" label="" variant="outlined" size="small" alue={itemPrice} onChange={(e) => setItemPrice(parseFloat(e.target.value))} />
+                <TextField sx={{ width: 310 }} id="outlined-basic" label="" variant="outlined" size="small" value={itemPrice} index={index} onChange={(e) => setItemPrice(parseFloat(e.target.value))} />
               </Grid>
             </TableCell>
             <TableCell align="right">
               <Grid item xs={2} marginBottom={2} >
-                <TextField sx={{ width: 310 }} id="outlined-basic" label="" variant="outlined" size="small" onChange={(e) => setItemQuantity(parseInt(e.target.value))}  />
+                <TextField sx={{ width: 310 }} id="outlined-basic" label="" variant="outlined" size="small" onChange={(e) => setItemQuantity(parseInt(e.target.value))} />
               </Grid>
             </TableCell>
             {invoiceData && invoiceData.items.map((item, index) => (
-            <TableCell key={index} align="right">{(item.price * item.quantity).toFixed(2)}</TableCell>
+              <TableCell key={index} align="right">{(item.price * item.quantity).toFixed(2)}</TableCell>
+            ))}
+          </TableRow>
           ))}
-            <TableCell align="right" >
-              <Grid item xs={2} marginBottom={2}  cursor={"pointer"}>
+          <TableRow>
+            <TableCell align="right" cursor={"pointer"}>
+              <Grid item xs={6}   display={'flex'} flexDirection={'row'} onClick={() => cloneTableRow(10)}>
                 <AddCircleIcon />
+                <Typography variant='body' marginLeft={2}>Add new Column</Typography>
               </Grid>
             </TableCell>
-            <TableCell align="right" >
-              {/* {textFields.map((value, index) => (
-              <Grid item xs={2} marginBottom={2} key={index}>
-                <input
-                  type="text"
-                  value={value}
-                  // onChange={(e) => handleChange(index, e.target.value)}
-                />
-              </Grid>
-            ))} */}
-            </TableCell>
-        
           </TableRow>
           <TableRow>
             <TableCell rowSpan={3} />
@@ -114,7 +119,7 @@ const TAX_RATE = 0.7;
           <TableRow>
             <TableCell colSpan={2}> <Typography variant='h6'>Total</Typography></TableCell>
             <TableCell align="right">{calculateTotal().toFixed(2)}</TableCell>
-            
+
           </TableRow>
         </TableBody>
       </Table>

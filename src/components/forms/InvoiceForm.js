@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
@@ -6,11 +6,6 @@ import Quotes from '../Quotes'
 import InvoiceGenerator from '../Quotes';
 
 const InvoiceForm = () => {
-  const [invoiceData, setInvoiceData] = useState(null);
-
-  const generateInvoice = (data) => {
-    setInvoiceData(data);
-  };
   return (
     <Grid>
       <Typography variant='h4'>Invoice generator</Typography>
