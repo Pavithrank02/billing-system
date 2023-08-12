@@ -226,7 +226,7 @@ export default function SideNav() {
           </ListItemButton>
           <Collapse in={openL} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <ListItemButton sx={{ pl: 4, ml: 5  }}>
+              <ListItemButton onClick={() => navigate('/')} disablePadding sx={{ pl: 4, ml: 5  }}>
                 <ListItemText primary="UnPaid Invoices" sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
               <ListItemButton sx={{ pl: 4, ml: 5 }}>
