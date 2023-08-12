@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Quotes from '../Quotes'
-import { DateField } from '@mui/x-date-pickers';
+import InvoiceGenerator from '../Quotes';
 
 const InvoiceForm = () => {
+  const [invoiceData, setInvoiceData] = useState(null);
+
+  const generateInvoice = (data) => {
+    setInvoiceData(data);
+  };
   return (
     <Grid>
       <Typography variant='h4'>Invoice generator</Typography>
@@ -50,32 +55,32 @@ const InvoiceForm = () => {
         </Grid>
       </Grid>
       <Grid container >
-          <Grid item xs={2} marginTop={2} >
-            <Typography variant='body'>City</Typography>
-          </Grid>
-          <Grid item xs={3} marginBottom={2} >
-            <TextField sx={{ fullW: 210 }} id="outlined-basic" label="" variant="outlined" size="small" fullWidth={true} />
-          </Grid>
+        <Grid item xs={2} marginTop={2} >
+          <Typography variant='body'>City</Typography>
         </Grid>
-        <Grid container >
-          <Grid item xs={2} marginTop={2} >
-            <Typography variant='body'>Zip Code</Typography>
-          </Grid>
-          <Grid item xs={3} marginBottom={2} >
-            <TextField sx={{ fullW: 210 }} id="outlined-basic" label="" variant="outlined" size="small" fullWidth={true} />
-          </Grid>
+        <Grid item xs={3} marginBottom={2} >
+          <TextField sx={{ fullW: 210 }} id="outlined-basic" label="" variant="outlined" size="small" fullWidth={true} />
         </Grid>
-        <Grid container >
-          <Grid item xs={2} marginTop={2} >
-            <Typography variant='body'>GST Number</Typography>
-          </Grid>
-          <Grid item xs={3} marginBottom={2} >
-            <TextField sx={{ fullW: 210 }} id="outlined-basic" label="" variant="outlined" size="small" fullWidth={true} />
-          </Grid>
+      </Grid>
+      <Grid container >
+        <Grid item xs={2} marginTop={2} >
+          <Typography variant='body'>Zip Code</Typography>
         </Grid>
-        <Grid container >
-          <Quotes />
+        <Grid item xs={3} marginBottom={2} >
+          <TextField sx={{ fullW: 210 }} id="outlined-basic" label="" variant="outlined" size="small" fullWidth={true} />
         </Grid>
+      </Grid>
+      <Grid container >
+        <Grid item xs={2} marginTop={2} >
+          <Typography variant='body'>GST Number</Typography>
+        </Grid>
+        <Grid item xs={3} marginBottom={2} >
+          <TextField sx={{ fullW: 210 }} id="outlined-basic" label="" variant="outlined" size="small" fullWidth={true} />
+        </Grid>
+      </Grid>
+      <Grid container >
+       <InvoiceGenerator />
+      </Grid>
 
     </Grid>
   )

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -12,21 +12,6 @@ import { Grid, TextField, Typography } from '@mui/material';
 
 const TAX_RATE = 0.07;
 
-// function ccyFormat(num) {
-//   return `${num.toFixed(5)}`;
-// }
-
-// function priceRow(qty, unit) {
-
-//   return qty * unit;
-// }
-
-// function createRow(desc, qty, unit) {
-
-//   const price = priceRow(qty, unit);
-//   // console.log(price)
-//   return { desc, qty, unit, price };
-// }
 // function subtotal(items) {
 //   return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
 // }
@@ -39,15 +24,30 @@ const TAX_RATE = 0.07;
 
 
 
-export default function Quotes() {
-  const [inputs, setInputs] = React.useState({
-    desc: "",
-    qty: "",
-    unit: ""
-  })
-  const addField = () => {
-    console.log("click")
-  }
+ const Quotes = () => {
+  const [customerName, setCustomerName] = useState('');
+  const [itemName, setItemName] = useState('');
+  const [itemPrice, setItemPrice] = useState(0);
+  const [itemQuantity, setItemQuantity] = useState(1);
+  const [invoiceData, setInvoiceData] = useState(null);
+
+  const handleGenerateInvoice = () => {
+    const newItem = {
+      name: itemName,
+      price: itemPrice,
+      quantity: itemQuantity,
+    };
+    const newInvoice = {
+      customerName,
+      items: [newItem],
+    };
+    setInvoiceData(newInvoice);
+  };
+
+  const calculateTotalPrice = () => {
+    if (!invoiceData) return 0;
+    return invoiceData.items.reduce((total, item) => total + item.price * item.quantity, 0);
+  };
 
   return (
     <TableContainer component={Paper}>
@@ -67,28 +67,42 @@ export default function Quotes() {
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow >
+          <TableRow onBlur={handleGenerateInvoice}>
             <TableCell>
               <Grid item xs={2} marginBottom={2} >
-                <TextField sx={{ width: 310 }} id="outlined-basic" label="" variant="outlined" size="small" value={inputs.qty} onChange={(e) => setInputs(e.target.value)} />
+                <TextField sx={{ width: 310 }} id="outlined-basic" label="" variant="outlined" size="small" value={itemName} onChange={(e) => setItemName(e.target.value)} />
               </Grid>
             </TableCell>
             <TableCell align="right">
               <Grid item xs={2} marginBottom={2} >
-                <TextField sx={{ width: 310 }} id="outlined-basic" label="" variant="outlined" size="small" value={inputs.qty} onChange={(e) => setInputs(e.target.value)} />
+                <TextField sx={{ width: 310 }} id="outlined-basic" label="" variant="outlined" size="small" alue={itemPrice} onChange={(e) => setItemPrice(parseFloat(e.target.value))} />
               </Grid>
             </TableCell>
             <TableCell align="right">
               <Grid item xs={2} marginBottom={2} >
-                <TextField sx={{ width: 310 }} id="outlined-basic" label="" variant="outlined" size="small" value={inputs.unit} onChange={(e) => setInputs(e.target.value)} />
+                <TextField sx={{ width: 310 }} id="outlined-basic" label="" variant="outlined" size="small" onChange={(e) => setItemQuantity(parseInt(e.target.value))}  />
               </Grid>
             </TableCell>
-            <TableCell align="right"></TableCell>
+            {invoiceData && invoiceData.items.map((item, index) => (
+            <TableCell key={index} align="right">{(item.price * item.quantity).toFixed(2)}</TableCell>
+          ))}
             <TableCell align="right" >
-              <Grid item xs={2} marginBottom={2} onClick={addField} cursor={"pointer"}>
-               <AddCircleIcon />
+              <Grid item xs={2} marginBottom={2}  cursor={"pointer"}>
+                <AddCircleIcon />
               </Grid>
             </TableCell>
+            <TableCell align="right" >
+              {/* {textFields.map((value, index) => (
+              <Grid item xs={2} marginBottom={2} key={index}>
+                <input
+                  type="text"
+                  value={value}
+                  // onChange={(e) => handleChange(index, e.target.value)}
+                />
+              </Grid>
+            ))} */}
+            </TableCell>
+        
           </TableRow>
           <TableRow>
             <TableCell rowSpan={3} />
@@ -102,10 +116,13 @@ export default function Quotes() {
           </TableRow>
           <TableRow>
             <TableCell colSpan={2}> <Typography variant='h6'>Total</Typography></TableCell>
-            {/* <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell> */}
+            <TableCell align="right">{calculateTotalPrice().toFixed(2)}</TableCell>
+            
           </TableRow>
         </TableBody>
       </Table>
     </TableContainer>
   );
 }
+
+export default Quotes
