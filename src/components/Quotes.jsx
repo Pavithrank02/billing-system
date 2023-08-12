@@ -10,19 +10,7 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { Grid, TextField, Typography } from '@mui/material';
 
 
-const TAX_RATE = 0.07;
-
-// function subtotal(items) {
-//   return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
-// }
-
-//   const invoiceSubtotal = subtotal();
-// const invoiceTaxes = TAX_RATE * invoiceSubtotal;
-// const invoiceTotal = invoiceTaxes + invoiceSubtotal;
-
-
-
-
+const TAX_RATE = 0.7;
 
  const Quotes = () => {
   const [customerName, setCustomerName] = useState('');
@@ -44,9 +32,18 @@ const TAX_RATE = 0.07;
     setInvoiceData(newInvoice);
   };
 
-  const calculateTotalPrice = () => {
+  const calculateTotal = () => {
+    if (!invoiceData) return 0;
+    return calculateSubtotal() + calculateTax();
+  };
+  const calculateSubtotal = () => {
     if (!invoiceData) return 0;
     return invoiceData.items.reduce((total, item) => total + item.price * item.quantity, 0);
+  };
+
+  const calculateTax = () => {
+    if (!invoiceData) return 0;
+    return (calculateSubtotal() * TAX_RATE) / 100;
   };
 
   return (
@@ -107,16 +104,16 @@ const TAX_RATE = 0.07;
           <TableRow>
             <TableCell rowSpan={3} />
             <TableCell colSpan={2}>Subtotal</TableCell>
-            {/* <TableCell align="right">{ccyFormat(invoiceSubtotal)}</TableCell> */}
+            <TableCell align="right">${calculateSubtotal().toFixed(2)}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>Tax</TableCell>
             <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
-            {/* <TableCell align="right">{ccyFormat(invoiceTaxes)}</TableCell> */}
+            <TableCell align="right">{calculateTax().toFixed(2)}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell colSpan={2}> <Typography variant='h6'>Total</Typography></TableCell>
-            <TableCell align="right">{calculateTotalPrice().toFixed(2)}</TableCell>
+            <TableCell align="right">{calculateTotal().toFixed(2)}</TableCell>
             
           </TableRow>
         </TableBody>
