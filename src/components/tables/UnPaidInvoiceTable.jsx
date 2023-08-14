@@ -84,12 +84,12 @@ const UnPaidInvoiceTable = () => {
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-            {data && data.map((key) => {
+            {/* {data && Object.key((key) => {
               return (
                 <TableCell  key={key}>
-                  
+                  {key.value}
                 </TableCell>
-            )})}
+            )})} */}
             </TableRow>
           </TableHead>
           <TableBody>

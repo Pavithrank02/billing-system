@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Grid from '@mui/material/Grid';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -9,11 +9,15 @@ import Salutation from '../textfields/Salutation';
 import { Stack } from '@mui/material';
 
 const CustomerForm = () => {
-  const [value, setValue] = React.useState(0);
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+  });
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
-
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   return (
@@ -27,7 +31,7 @@ const CustomerForm = () => {
             aria-labelledby="demo-controlled-radio-buttons-group"
             name="controlled-radio-buttons-group"
             value={value}
-            onChange={handleChange}
+            onChange={handleInputChange}
           >
             <Stack spacing={2} direction={'row'} >
               <FormControlLabel value="Business" control={<Radio />} label="Business" />
@@ -44,10 +48,12 @@ const CustomerForm = () => {
           <Salutation />
         </Grid>
         <Grid item xs={1} marginBottom={2} marginLeft={2}>
-          <TextField id="outlined-basic" label="FirstName" variant="outlined" size="small" />
+          <TextField id="outlined-basic" label="FirstName" variant="outlined" size="small" name="firstName"
+        value={formData.firstName} />
         </Grid>
         <Grid item xs={1} marginBottom={2} marginLeft={2}>
-          <TextField id="outlined-basic" label="LastName" variant="outlined" size="small" />
+          <TextField id="outlined-basic" label="LastName" variant="outlined" size="small" name="lastName"
+        value={formData.lastName}/>
         </Grid>
       </Grid>
       <Grid container >
@@ -79,7 +85,8 @@ const CustomerForm = () => {
           <Typography variant='body'>Customer Email</Typography>
         </Grid>
         <Grid item xs={3} marginBottom={2} >
-          <TextField sx={{ fullW: 210 }} id="outlined-basic" label="" variant="outlined" size="small" fullWidth={true} />
+          <TextField sx={{ fullW: 210 }} id="outlined-basic" label="" variant="outlined" size="small" fullWidth={true} name="firstName"
+        value={formData.email}/>
         </Grid>
       </Grid>
     </Grid>

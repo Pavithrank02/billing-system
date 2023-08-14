@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Button, Grid, TextField, Typography } from '@mui/material'
-
+import { useNavigate } from 'react-router-dom'
 const Home = () => {
+  const navigate = useNavigate()
   const [isSignup, setIsSignup] = useState(false)
   const [inputs, setInputs] = useState({
     name: "", email: "", password: ""
@@ -15,6 +16,12 @@ const Home = () => {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
+    if(inputs.email === "test@123" && inputs.password ==="12345"){
+      alert("login success")
+      navigate("/dashboard")
+    } else{
+      alert("Invalid credentials")
+    }
     console.log(inputs)
 
   }
