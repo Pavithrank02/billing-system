@@ -107,7 +107,6 @@ export const Dashboard = () => {
                   </Typography>
                   <AccordionC />
                 </CardContent>
-
               </Card>
             </Grid>
           </Grid>

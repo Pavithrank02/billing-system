@@ -13,8 +13,8 @@ export default function Salutation() {
   };
 
   return (
-    <Box sx={{ minWidth: 120 }}>
-      <FormControl sx={{width: 100}} size='small'>
+    <Box sx={{ minWidth: 100 }}>
+      <FormControl sx={{maxWidth: 290, minWidth: 100}} size='small'>
         <InputLabel id="demo-simple-select-label">Salutation</InputLabel>
         <Select
           labelId="demo-simple-select-label"

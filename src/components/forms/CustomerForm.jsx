@@ -17,7 +17,7 @@ const CustomerForm = () => {
   };
 
   return (
-    <Grid>
+    <Grid >
       <Grid container >
         <Grid item xs={2} marginTop={2} >
           <Typography variant='body'>Customer Type</Typography>
