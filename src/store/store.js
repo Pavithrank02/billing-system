@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
+import unPaidInvoiceSlice from "../utils/userSlice"
+
 const store = configureStore({
   reducer: {
-    app: appSlice,
-    search: searchSlice,
-    chat: chatSlice,
+    unpaid: unPaidInvoiceSlice,
   }
 })
 

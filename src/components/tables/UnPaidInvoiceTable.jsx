@@ -7,6 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+import useData from '../../utils/useData';
 const columns = [
   { id: 'date', label: 'Date', minWidth: 170 },
   { id: 'code', label: 'ISO\u00a0Code', minWidth: 100 },
@@ -57,6 +58,14 @@ const rows = [
 ];
 
 const UnPaidInvoiceTable = () => {
+  const data = useData()
+  console.log(data)
+  const key = Object.entries(data).forEach(([key, value]) => {
+    return (key, value)
+  })
+
+  console.log(key)
+  
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -75,15 +84,12 @@ const UnPaidInvoiceTable = () => {
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ minWidth: column.minWidth }}
-                >
-                  {column.label}
+            {data && data.map((key) => {
+              return (
+                <TableCell  key={key}>
+                  
                 </TableCell>
-              ))}
+            )})}
             </TableRow>
           </TableHead>
           <TableBody>

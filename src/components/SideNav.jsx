@@ -225,8 +225,8 @@ export default function SideNav() {
             {openL ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
           <Collapse in={openL} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItemButton onClick={() => navigate('/')} disablePadding sx={{ pl: 4, ml: 5  }}>
+            <List component="div">
+              <ListItemButton onClick={() => navigate('/user')} disablePadding sx={{ pl: 4, ml: 5  }}>
                 <ListItemText primary="UnPaid Invoices" sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
               <ListItemButton sx={{ pl: 4, ml: 5 }}>

@@ -8,6 +8,7 @@ import './App.css';
 import { Analytics } from './pages/Analytics';
 import Invoice from './pages/Invoice';
 import { Billing } from './pages/Billing';
+import UserTable from './components/UserInfo';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Route path='/customer' element={<Customer />}/>
       <Route path='/analytics' element={<Analytics />}/>
       <Route path='/newquote' element={<Billing />}/>
+      <Route path='/user' element={<UserTable />}/>
 
 
     </Routes>
