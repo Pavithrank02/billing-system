@@ -40,7 +40,6 @@ export const Customer = () => {
                     </Typography>
                     <BasicTabs />
                   </CardContent>
-
                 </Card>
               </Grid>
             </Grid>

@@ -8,6 +8,7 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import { Stack } from '@mui/material';
 import AddressForm from './forms/AddressForm';
+import PaymentForm from './forms/PaymentForm';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -61,7 +62,7 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-
+        <PaymentForm />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <Typography variant='body'>Billing Address</Typography>

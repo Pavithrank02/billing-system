@@ -10,7 +10,9 @@ export default function Salutation() {
 
   const handleChange = (event) => {
     setAge(event.target.value);
+   
   };
+  
 
   return (
     <Box sx={{ minWidth: 100 }}>
@@ -24,9 +26,9 @@ export default function Salutation() {
           onChange={handleChange}
 
         >
-          <MenuItem value={10}>Mr.</MenuItem>
-          <MenuItem value={20}>Mrs</MenuItem>
-          <MenuItem value={30}>Miss</MenuItem>
+          <MenuItem value={"Mr."}>Mr.</MenuItem>
+          <MenuItem value={"Mrs"}>Mrs</MenuItem>
+          <MenuItem value={"Miss"}>Miss</MenuItem>
         </Select>
       </FormControl>
     </Box>

@@ -13,6 +13,10 @@ const CustomerForm = () => {
     firstName: '',
     lastName: '',
     email: '',
+    salutation: '', 
+    customerType: "", 
+    phone: "", 
+
   });
 
   const handleInputChange = (event) => {
@@ -30,12 +34,12 @@ const CustomerForm = () => {
           <RadioGroup
             aria-labelledby="demo-controlled-radio-buttons-group"
             name="controlled-radio-buttons-group"
-            value={value}
+            value={formData.customerType}
             onChange={handleInputChange}
           >
             <Stack spacing={2} direction={'row'} >
-              <FormControlLabel value="Business" control={<Radio />} label="Business" />
-              <FormControlLabel value="Individual" control={<Radio />} label="Individual" />
+              <FormControlLabel name="Business" value="Business" control={<Radio />} label="Business" />
+              <FormControlLabel name="Individual" value="Individual" control={<Radio />} label="Individual" />
             </Stack>
           </RadioGroup>
         </Grid>
@@ -49,11 +53,12 @@ const CustomerForm = () => {
         </Grid>
         <Grid item xs={1} marginBottom={2} marginLeft={2}>
           <TextField id="outlined-basic" label="FirstName" variant="outlined" size="small" name="firstName"
-        value={formData.firstName} />
+            value={formData.firstName} onChange={handleInputChange}
+          />
         </Grid>
         <Grid item xs={1} marginBottom={2} marginLeft={2}>
           <TextField id="outlined-basic" label="LastName" variant="outlined" size="small" name="lastName"
-        value={formData.lastName}/>
+            value={formData.lastName} onChange={handleInputChange} />
         </Grid>
       </Grid>
       <Grid container >
@@ -61,7 +66,7 @@ const CustomerForm = () => {
           <Typography variant='body'>Customer Name</Typography>
         </Grid>
         <Grid item xs={3} marginBottom={2} >
-          <TextField sx={{ fullW: 210 }} id="outlined-basic" label="" variant="outlined" size="small" fullWidth={true} />
+          <TextField sx={{ fullW: 210 }} id="outlined-basic" label="" variant="outlined" size="small" fullWidth={true} onChange={handleInputChange}/>
         </Grid>
       </Grid>
       <Grid container >
@@ -69,7 +74,7 @@ const CustomerForm = () => {
           <Typography variant='body'>Customer Display Name</Typography>
         </Grid>
         <Grid item xs={3} marginBottom={2} >
-          <TextField sx={{ fullW: 210 }} id="outlined-basic" label="" variant="outlined" size="small" fullWidth={true} />
+          <TextField sx={{ fullW: 210 }} id="outlined-basic" label="" variant="outlined" size="small" fullWidth={true} onChange={handleInputChange}/>
         </Grid>
       </Grid>
       <Grid container >
@@ -77,7 +82,7 @@ const CustomerForm = () => {
           <Typography variant='body'>Customer Phone</Typography>
         </Grid>
         <Grid item xs={3} marginBottom={2} >
-          <TextField sx={{ fullW: 210 }} id="outlined-basic" label="" variant="outlined" size="small" fullWidth={true} />
+          <TextField sx={{ fullW: 210 }} id="outlined-basic" label="" variant="outlined" size="small" fullWidth={true} onChange={handleInputChange}/>
         </Grid>
       </Grid>
       <Grid container >
@@ -86,7 +91,7 @@ const CustomerForm = () => {
         </Grid>
         <Grid item xs={3} marginBottom={2} >
           <TextField sx={{ fullW: 210 }} id="outlined-basic" label="" variant="outlined" size="small" fullWidth={true} name="firstName"
-        value={formData.email}/>
+            value={formData.email} onChange={handleInputChange}/>
         </Grid>
       </Grid>
     </Grid>
