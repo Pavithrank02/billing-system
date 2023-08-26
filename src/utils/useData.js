@@ -6,7 +6,7 @@ const useData = () => {
     getAPIData()
   },[])
 
-  const [data, setData] = useState("")
+  const [data, setData] = useState([])
   async function getAPIData() {
     const userInfo = await fetch(CUSTOMER_API)
     const json = await userInfo.json()
