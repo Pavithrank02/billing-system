@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { CUSTOMER_API } from "./Constants";
 
 const useData = () => {
+
+  const [data, setData] = useState([])
+
   useEffect(() => {
     getAPIData()
   },[])
 
-  const [data, setData] = useState([])
   async function getAPIData() {
     const userInfo = await fetch(CUSTOMER_API)
     const json = await userInfo.json()
