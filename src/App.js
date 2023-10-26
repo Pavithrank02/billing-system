@@ -20,8 +20,6 @@ function App() {
       <Route path='/customer' element={<Customer />}/>
       <Route path='/analytics' element={<Analytics />}/>
       <Route path='/newquote' element={<Billing />}/>
-
-
     </Routes>
     
   );
