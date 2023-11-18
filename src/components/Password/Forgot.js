@@ -7,7 +7,6 @@ import Field from '../Login/Field';
 import { forgot } from '../../actions/auth';
 import styles from './Password.module.css'
 
-
 const Forgot = () => {
   const classes = useStyles();
   const history = useHistory()
